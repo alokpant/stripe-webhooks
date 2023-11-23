@@ -1,5 +1,5 @@
 class Subscription < ApplicationRecord
   enum :status, { unpaid: 'unpaid', paid: 'paid', cancelled: 'cancelled'}, default: :unpaid
 
-  validates :stripe_id, presence: true
+  validates_presence_of :stripe_id, :status
 end
