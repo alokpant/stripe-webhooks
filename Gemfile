@@ -67,4 +67,8 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  # Earlier version is using File.exists? which is deprecated
+  # It has already been fixed in master but not released yet
+  # https://github.com/stripe-ruby-mock/stripe-ruby-mock/blob/master/lib/stripe_mock/api/webhooks.rb#L7C12-L7C12
+  gem 'stripe-ruby-mock', :require => 'stripe_mock', git: 'https://github.com/stripe-ruby-mock/stripe-ruby-mock.git', branch: 'master'
 end

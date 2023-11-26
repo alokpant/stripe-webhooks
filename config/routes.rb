@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  post '/webhooks/stripe', to: 'webhooks#stripe'
 end

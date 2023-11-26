@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  stripe_id: MyString
-  status: MyString
+unpaid_subscription:
+  stripe_id: stripe_subscription_id_1
+  status: unpaid
 
-two:
-  stripe_id: MyString
-  status: MyString
+paid_subscription:
+  stripe_id: stripe_subscription_id_2
+  status: paid
