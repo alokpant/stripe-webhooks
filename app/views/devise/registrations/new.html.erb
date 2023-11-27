@@ -1,29 +1,41 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="bg-gray-100 flex justify-center items-center h-screen">
+    <!-- Left: Image -->
+  <div class="w-1/2 h-screen hidden lg:block">
+    <img src="https://placehold.co/800x/667fff/ffffff.png?text=Your+Image&font=Montserrat" alt="Placeholder Image" class="object-cover w-full h-full">
   </div>
+  <!-- Right: Login Form -->
+  <div class="lg:p-36 md:p-52 sm:20 p-8 sm:container lg:w-1/2">
+    <h1 class="text-2xl font-semibold mb-4">Sign up</h1>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <!-- Email Input -->
+      <div class="mb-4 field">
+        <%= f.label :email, class: "block text-gray-600" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" %>
+      </div>
+      <!-- Password Input -->
+      <div class="mb-4 field">
+        <%= f.label :password, class: "block text-gray-600" %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" %>
+      </div>
+      <!-- Password Confirmation Input -->
+      <div class="mb-4 field">
+        <%= f.label :password_confirmation, class: "block text-gray-600" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+      <!-- Remember Me Checkbox -->
+      <% if devise_mapping.rememberable? %>
+        <div class="field mb-4 flex items-center">
+          <%= f.check_box :remember_me, class: "text-blue-500" %>
+          <%= f.label :remember_me, class: "text-gray-600 ml-2" %>
+        </div>
+      <% end %>
+      <!-- Login Button -->
+      <%= f.submit "Sign up", class: "ml-2 px-8 py-2 tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80" %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
