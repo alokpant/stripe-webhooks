@@ -73,3 +73,5 @@ group :test do
   # https://github.com/stripe-ruby-mock/stripe-ruby-mock/blob/master/lib/stripe_mock/api/webhooks.rb#L7C12-L7C12
   gem 'stripe-ruby-mock', :require => 'stripe_mock', git: 'https://github.com/stripe-ruby-mock/stripe-ruby-mock.git', branch: 'master'
 end
+
+gem "tailwindcss-rails", "~> 2.0"
