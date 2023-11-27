@@ -12,7 +12,7 @@
   <div class="row">
     <h2 class="col-md-12 mt-5 text-center">Prices</h2>
     <div>
-      <%= @prices.each do |price| %>
+      <% @prices.each do |price| %>
         <ul style='display: flex; justify-content: space-between; width: 500px; list-style: none;'>
           <li><%= price.product.name %></li>
           <li><%= "#{price.currency} #{price.unit_amount/100}" %></li>

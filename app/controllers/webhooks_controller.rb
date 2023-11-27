@@ -36,9 +36,9 @@ class WebhooksController < ApplicationController
       # event.data.object is a Stripe::Subscription
       handle_subscription_creation(event.data.object)
     when 'invoice.payment_succeeded'
-      handle_payment_succeeded(event['data']['object'])
+      handle_payment_succeeded(event.data.object)
     when 'customer.subscription.deleted'
-      handle_subscription_deleted(event['data']['object'])
+      handle_subscription_deleted(event.data.object)
     end
   end
 
@@ -58,12 +58,6 @@ class WebhooksController < ApplicationController
 
   def handle_subscription_deleted(subscription)
     subscription = Subscription.find_by(stripe_id: subscription['id'])
-    puts '**'*100
-    puts '**'*100
-    puts '**'*100
-    puts subscription.to_json
-    puts '**'*100
-    puts '**'*100
     subscription.update(status: 'canceled') if subscription.present? && subscription.paid?
   end
 
