@@ -2,11 +2,5 @@
   <ul style='display: flex; justify-content: space-between; width: 500px; list-style: none;'>
     <li><%= subscription.stripe_id %></li>
     <li><%= subscription.status %></li>
-    <% if subscription.status == 'unpaid' %>
-      <%= button_to "Pay Invoice", pay_invoice_subscription_path(id: subscription.id, stripe_id: subscription.stripe_id), method: :post, remote: true, class: "btn btn-primary" %>
-    <% end %>
-    <% if subscription.status == 'paid' %>
-      <%= button_to "Cancel Subscription", cancel_subscription_subscription_path(id: subscription.id, stripe_id: subscription.stripe_id), method: :post, remote: true, class: "btn btn-danger" %>
-    <% end %>
   </ul>
 <% end %>
