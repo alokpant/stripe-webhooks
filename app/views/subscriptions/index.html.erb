@@ -14,7 +14,7 @@
     <div>
       <%= @prices.each do |price| %>
         <ul style='display: flex; justify-content: space-between; width: 500px; list-style: none;'>
-          <li><%= price.product %></li>
+          <li><%= price.product.name %></li>
           <li><%= "#{price.currency} #{price.unit_amount/100}" %></li>
           <li><%= price.recurring&.interval %></li>
         </ul>
