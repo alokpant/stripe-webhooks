@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     end
   end
   root "subscriptions#index"
+  post 'subscription/checkout' => 'subscriptions#checkout'
+  get 'subscription/success' => 'subscriptions#success'
+  get 'subscription/failure' => 'subscriptions#failure'
+
   # post '/pay_invoice' => 'subscriptions#pay_invoice', as: :pay_invoice
   # post '/cancel_subscription' => 'subscriptions#cancel_subscription', as: :cancel_subscription
 

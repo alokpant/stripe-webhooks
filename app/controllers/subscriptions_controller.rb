@@ -7,8 +7,30 @@ class SubscriptionsController < ApplicationController
     @prices = stripe_price_list
     @subscriptions = Subscription.all
   end
+
+  def checkout
+    session = Stripe::Checkout::Session.create({
+      customer: current_user.stripe_customer_id,
+      mode: 'subscription',
+      line_items: [{
+        quantity: 1,
+        price: params['price_id']
+      }],
+      success_url: subscription_success_url,
+      cancel_url: subscription_failure_url
+    })
+
+    redirect_to session.url, allow_other_host: true
+  end
+
   def success
-    @plans = Stripe::Plan.list.data
+    flash[:notice] = 'Your subscription was created successfully'
+    redirect_to subscriptions_path
+  end
+
+  def failure
+    flash[:alert] = 'There was some problem with your subscription'
+    redirect_to subscriptions_path
   end
 
   def subscribe

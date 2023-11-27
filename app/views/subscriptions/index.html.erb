@@ -17,6 +17,7 @@
           <li><%= price.product.name %></li>
           <li><%= "#{price.currency} #{price.unit_amount/100}" %></li>
           <li><%= price.recurring&.interval %></li>
+          <li><%= button_to 'Subscribe', subscription_checkout_path(price_id: price.id), data: { turbo: 'false' } %></li>
         </ul>
       <% end %>
     </div>
