@@ -15,18 +15,12 @@ Rails.application.routes.draw do
       post :cancel_subscription
     end
   end
+
   root "subscriptions#index"
-  post 'subscription/checkout' => 'subscriptions#checkout'
   get 'subscription/success' => 'subscriptions#success'
   get 'subscription/failure' => 'subscriptions#failure'
 
-  # post '/pay_invoice' => 'subscriptions#pay_invoice', as: :pay_invoice
-  # post '/cancel_subscription' => 'subscriptions#cancel_subscription', as: :cancel_subscription
-
-  # get '/card/new' => 'subscriptions#new_card', as: :add_payment_method
-  # post "/card" => "subscriptions#create_card", as: :create_payment_method
-  # get '/success' => 'subscriptions#success', as: :success
-  # post '/subscription' => 'subscriptions#subscribe', as: :subscribe
-
+  post 'subscription/checkout' => 'subscriptions#checkout'
+  post 'billing/portal', to: 'billings#portal'
   post '/webhooks/stripe', to: 'webhooks#stripe'
 end
