@@ -9,7 +9,7 @@ class WebhooksController < ApplicationController
     event = nil
 
     begin
-      signing_secret = Rails.application.credentials.stripe[:signing_secret]
+      signing_secret = Rails.application.credentials.stripe[:development][:signing_secret]
       event = Stripe::Webhook.construct_event(
         payload, sig_header, signing_secret
       )

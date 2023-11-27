@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-4 text-center">
+      <h1> Welcome  <%= @user %></h1>
+      <div id='subscriptions_list'>
+        <%= render :partial => 'subscriptions_list', locals: { subscriptions: @subscriptions } %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h2 class="col-md-12 mt-5 text-center">
+      Are you ready to pay?
+      <%= @plans.to_json %>
+    </h2>
+  </div>
+</div>
