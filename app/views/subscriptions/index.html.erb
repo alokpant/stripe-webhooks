@@ -1,16 +1,23 @@
 <div class="container">
+  <h1> Welcome  <%= @user.stripe_customer_id %></h1>
+
   <div class="row">
+    <h2 class="col-md-12 mt-5 text-center">Running invoices</h2>
     <div class="col-md-12 mt-4 text-center">
-      <h1> Welcome  <%= @user %></h1>
       <div id='subscriptions_list'>
         <%= render :partial => 'subscriptions_list', locals: { subscriptions: @subscriptions } %>
       </div>
     </div>
   </div>
   <div class="row">
-    <h2 class="col-md-12 mt-5 text-center">
-      Are you ready to pay?
-      <%= @plans.to_json %>
-    </h2>
-  </div>
+    <h2 class="col-md-12 mt-5 text-center">Prices</h2>
+    <div>
+      <%= @prices.each do |price| %>
+        <ul style='display: flex; justify-content: space-between; width: 500px; list-style: none;'>
+          <li><%= price.product %></li>
+          <li><%= "#{price.currency} #{price.unit_amount/100}" %></li>
+          <li><%= price.recurring&.interval %></li>
+        </ul>
+      <% end %>
+    </div>
 </div>

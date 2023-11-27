@@ -30,6 +30,8 @@ class WebhooksController < ApplicationController
 
   def handle_event(event)
     case event.type
+    when 'customer.created'
+      handle_customer_creation(event.data.object)
     when 'customer.subscription.created'
       # event.data.object is a Stripe::Subscription
       handle_subscription_creation(event.data.object)
@@ -38,6 +40,11 @@ class WebhooksController < ApplicationController
     when 'customer.subscription.deleted'
       handle_subscription_deleted(event['data']['object'])
     end
+  end
+
+  def handle_customer_creation(customer)
+    user = User.find_by(email: customer.email)
+    user.update(stripe_customer_id: customer.id) if user.present?
   end
 
   def handle_subscription_creation(subscription)
@@ -50,8 +57,14 @@ class WebhooksController < ApplicationController
   end
 
   def handle_subscription_deleted(subscription)
-    subscription_record = Subscription.find_by(stripe_id: subscription['id'])
-    subscription_record.update(status: 'canceled') if subscription_record.present? && subscription_record.paid?
+    subscription = Subscription.find_by(stripe_id: subscription['id'])
+    puts '**'*100
+    puts '**'*100
+    puts '**'*100
+    puts subscription.to_json
+    puts '**'*100
+    puts '**'*100
+    subscription.update(status: 'canceled') if subscription.present? && subscription.paid?
   end
 
   def handle_bad_request(e)
