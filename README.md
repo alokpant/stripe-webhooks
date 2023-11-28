@@ -44,3 +44,7 @@ To run tests:
 ```
 rails test
 ```
+
+https://github.com/alokpant/stripe-webhooks/assets/6135761/eb5ef1fb-1fca-4509-b953-25e088131b42
+
+
