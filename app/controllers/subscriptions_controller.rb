@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
   def index
     @user = current_user
     @prices = stripe_price_list
-    @subscriptions = Subscription.all
+    @subscriptions = Subscription.where(user_id: current_user.id)
   end
 
   def checkout

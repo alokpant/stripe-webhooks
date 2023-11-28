@@ -1,6 +1,6 @@
 <div class="bg-white">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 p-2 justify-content align-content px-2 container mx-auto">
-    <%= render :partial => 'subscriptions_list', locals: { subscriptions: @subscriptions } %>
+    <%= render :partial => 'subscriptions', locals: { subscriptions: @subscriptions } %>
     <%= render :partial => 'pricings', locals: { prices: @prices } %>
   </div>
 </div>

@@ -9,4 +9,6 @@ class Subscription < ApplicationRecord
   }.freeze
 
   validates_presence_of :stripe_id, :status
+
+  belongs_to :user
 end

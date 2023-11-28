@@ -48,7 +48,7 @@ class WebhooksController < ApplicationController
   end
 
   def handle_subscription_creation(subscription)
-    Subscription.where(stripe_id: subscription.id).first_or_create
+    Subscription.where(stripe_id: subscription.id, user_id: current_user.id).first_or_create
   end
 
   def handle_payment_succeeded(invoice)
