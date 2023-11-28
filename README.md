@@ -1,24 +1,20 @@
-# README
+# Getting started with Backend APP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To run the project:
 
-Things you may want to cover:
+Install dependencies and start server:
 
-* Ruby version
+```
+cd backend
+bundle install
+rake db:drop db:create db:migrate db:seed
+rails s
+```
 
-* System dependencies
+To run tests:
+```
+rails test
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
