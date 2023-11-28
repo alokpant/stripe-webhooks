@@ -3,7 +3,9 @@
 unpaid_subscription:
   stripe_id: stripe_subscription_id_1
   status: unpaid
+  user_id: 1
 
 paid_subscription:
   stripe_id: stripe_subscription_id_2
   status: paid
+  user_id: 1
