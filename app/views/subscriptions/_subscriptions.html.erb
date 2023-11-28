@@ -2,19 +2,17 @@
   <table class="border-collapse leading-normal">
     <thead>
       <tr>
-          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Product</th>
-          <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Status</th>
+          <th class="font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300">Product</th>
+          <th class="font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300">Status</th>
       </tr>
     </thead>
     <tbody>
       <% subscriptions.each do |subscription| %>
-        <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Product</span>
+        <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap lg:mb-0">
+            <td class="text-gray-800 text-center border border-b lg:table-cell relative">
               <%= subscription.stripe_id %>
             </td>
-          	<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-              <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
+          	<td class="text-gray-800 text-center border border-b text-center lg:table-cell relative">
               <span class="rounded bg-<%= Subscription::SUBSCRIPTION_BUTTON_COLORS.dig(subscription.status.to_sym) %>-400 py-1 px-3 text-xs font-bold"><%= subscription.status %></span>
           	</td>
         </tr>
